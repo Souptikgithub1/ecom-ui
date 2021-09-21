@@ -193,21 +193,21 @@ const NavbarComponent = (props) => {
           <ElevationScroll {...props}>
               <AppBar style={{ color: '#111'}}>
                   <Toolbar style={{paddingLeft: '5rem', paddingRight: '5rem'}}>
-                      {/*<IconButton
+                      <IconButton
                           size="large"
                           edge="start"
                           color="inherit"
                           aria-label="open drawer"
                           sx={{ mr: 2 }}
                       >
-                          <img src="/ecart.svg" alt="none" style={{width: '2.5rem', height: '2.5rem'}}/>
-                      </IconButton>*/}
-                      <Typography
+                          <img src="/ecom-logo1.png" alt="none" style={{width: '6.4rem', height: '3rem'}}/>
+                      </IconButton>
+                      {/*<Typography
                           variant="h6"
                           noWrap
                           component="div"
                           sx={{ display: { xs: 'none', sm: 'block' } }}
-                      > E-com</Typography>
+                      > E-com</Typography>*/}
                       <Box sx={{paddingLeft: '10px', display: "flex", alignItems: "center"}}>
                           {["Electronics", "Tvs & Appliances", "Men's Wear", "Women's Wear"]
                               .map(x => <Link underline='none'
