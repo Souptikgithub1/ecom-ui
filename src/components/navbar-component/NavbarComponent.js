@@ -14,6 +14,8 @@ import {alpha, styled} from "@mui/material/styles";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PropTypes from "prop-types";
 
+import './NavbarComponent.css'
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     /*backgroundColor: alpha(theme.palette.common.white, 0.15),*/
@@ -180,7 +182,7 @@ const NavbarComponent = (props) => {
                     aria-haspopup="true"
                     color="inherit"
                 >
-                    <AccountCircle />
+                    <AccountCircle  />
                 </IconButton>
                 <p>Profile</p>
             </MenuItem>
@@ -202,26 +204,28 @@ const NavbarComponent = (props) => {
                       >
                           <img src="/ecom-logo1.png" alt="none" style={{width: '6.4rem', height: '3rem'}}/>
                       </IconButton>
-                      {/*<Typography
-                          variant="h6"
-                          noWrap
-                          component="div"
-                          sx={{ display: { xs: 'none', sm: 'block' } }}
-                      > E-com</Typography>*/}
-                      <Box sx={{paddingLeft: '10px', display: "flex", alignItems: "center"}}>
+                      <Box sx={{display: "flex", alignItems: "center"}}>
                           {["Electronics", "Tvs & Appliances", "Men's Wear", "Women's Wear"]
-                              .map(x => <Link underline='none'
+                              .map(x => <Link underline='none' className='nav-bar-link dropdown'
                                               sx={{color: '#111',
-                                                  marginLeft: '22px',
-                                                  fontSize: '15px !important',
+                                                  padding: '2rem 0.6rem',
+                                                  fontSize: '14px !important',
+                                                  fontWeight: '600 !important',
+                                                  textTransform: 'uppercase',
                                                   display: 'flex',
-                                                  font: 'inherit',
                                                   alignItems: 'center',
                                                   '&:hover': {
                                                     cursor: 'pointer'
+                                                  },
+                                                  '&:first-child': {
+                                                    marginLeft: 0
                                                   }
                                               }}>
-                                  {x} <Icon sx={{fontSize: '1rem', marginLeft: '5px'}}>keyboard_arrow_down</Icon>
+                                  <span className='dropbtn'>{x} <Icon sx={{fontSize: '1rem', marginLeft: '2px'}}>keyboard_arrow_down</Icon></span>
+                                  <div className="dropdown-content">
+                                        <Icon className='dropdown-arrow-up'>arrow_drop_up</Icon>
+                                      <div></div>
+                                  </div>
                               </Link>)
                           }
                       </Box>
@@ -239,20 +243,6 @@ const NavbarComponent = (props) => {
                       </Box>
                       <Box sx={{ flexGrow: 1 }} />
                       <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                          {/*<IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                              <Badge badgeContent={4} color="error">
-                                  <MailIcon />
-                              </Badge>
-                          </IconButton>
-                          <IconButton
-                              size="large"
-                              aria-label="show 17 new notifications"
-                              color="inherit"
-                          >
-                              <Badge badgeContent={17} color="error">
-                                  <NotificationsIcon />
-                              </Badge>
-                          </IconButton>*/}
                           <IconButton
                               size="large"
                               edge="end"

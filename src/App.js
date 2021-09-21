@@ -6,6 +6,9 @@ import Container from '@mui/material/Container';
 import NavbarComponent from "./components/navbar-component/NavbarComponent";
 import Toolbar from "@mui/material/Toolbar";
 import image1 from './assets/imgs/slide1.jpg'
+import BannerCarousel from "./components/banner-carousel/BannerCarousel";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -19,7 +22,8 @@ const App = (props) => {
     <div className="App">
       <NavbarComponent {...props} />
         {/*<Toolbar />*/}
-        <img src={image1} alt="none" width='100%' />
+        {/*<img src={image1} alt="none" width='100%' />*/}
+        <BannerCarousel />
       <Container>
         <Box sx={{ my: 2 }}>
           {[...new Array(120)]

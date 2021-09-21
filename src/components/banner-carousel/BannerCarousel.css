@@ -1,0 +1,14 @@
+.carousel-content {
+    position: absolute;
+    top: 30rem;
+    left: 30rem;
+}
+
+.shop-now {
+    background: #111;
+    color: #fff;
+    padding: 1.5rem 4rem;
+    font-size: 25px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
