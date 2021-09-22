@@ -202,7 +202,7 @@ const NavbarComponent = (props) => {
                           aria-label="open drawer"
                           sx={{ mr: 2 }}
                       >
-                          <img src="/ecom-logo1.png" alt="none" style={{width: '6.4rem', height: '3rem'}}/>
+                          <img src="/ecom-logo.png" alt="none" style={{width: '3.5rem', height: '3.5rem'}}/>
                       </IconButton>
                       <Box sx={{display: "flex", alignItems: "center"}}>
                           {["Electronics", "Tvs & Appliances", "Men's Wear", "Women's Wear"]
