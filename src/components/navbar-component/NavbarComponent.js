@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import {Badge, Icon, IconButton, InputBase, Link, Menu, MenuItem} from "@mui/material";
-import Typography from "@mui/material/Typography";
+import {
+    Badge,
+    Icon,
+    IconButton,
+    InputBase,
+    Link,
+    Menu,
+    MenuItem
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import MailIcon from "@mui/icons-material/Mail";
@@ -15,6 +22,8 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PropTypes from "prop-types";
 
 import './NavbarComponent.css'
+import {useAppContext} from "../../context/AppContext";
+import {createCategoryTree} from "../../utils/CommonUtils";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -92,11 +101,23 @@ ElevationScroll.propTypes = {
 
 const NavbarComponent = (props) => {
 
+    const {categories} = useAppContext();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const [catTreeData, setCatTreeData] = useState([]);
+
+    useEffect(() => {
+        const catTree = createCategoryTree(categories)
+        setCatTreeData(catTree)
+
+    }, [categories])
+
+
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -205,8 +226,8 @@ const NavbarComponent = (props) => {
                           <img src="/ecom-logo.png" alt="none" style={{width: '3.5rem', height: '3.5rem'}}/>
                       </IconButton>
                       <Box sx={{display: "flex", alignItems: "center"}}>
-                          {["Electronics", "Tvs & Appliances", "Men's Wear", "Women's Wear"]
-                              .map(x => <Link underline='none' className='nav-bar-link dropdown'
+                          { !!catTreeData && catTreeData[0] ? catTreeData[0].children
+                              .map(cat1 => <Link key={cat1.categoryId} underline='none' className='nav-bar-link dropdown'
                                               sx={{color: '#111',
                                                   padding: '2rem 0.6rem',
                                                   fontSize: '14px !important',
@@ -217,16 +238,27 @@ const NavbarComponent = (props) => {
                                                   '&:hover': {
                                                     cursor: 'pointer'
                                                   },
-                                                  '&:first-child': {
+                                                  '&:first-of-type': {
                                                     marginLeft: 0
                                                   }
                                               }}>
-                                  <span className='dropbtn'>{x} <Icon sx={{fontSize: '1rem', marginLeft: '2px'}}>keyboard_arrow_down</Icon></span>
+                                  <span className='dropbtn'>{cat1.categoryName} <Icon sx={{fontSize: '1rem', marginLeft: '2px'}}>keyboard_arrow_down</Icon></span>
                                   <div className="dropdown-content">
                                         <Icon className='dropdown-arrow-up'>arrow_drop_up</Icon>
-                                      <div></div>
+                                      <div className='dropdown-content-container'>
+                                          {cat1.children.map(cat2 => <div key={cat2.categoryId} className='category-subParent'>
+                                              {!!cat2.children && <React.Fragment>
+                                                  <span className='category-subParent-header'>{cat2.categoryName}</span>
+                                                  <ul className='category-list'>
+                                                      {cat2.children.map(cat3 => <li key={cat3.categoryId} className='category-list-item'>{cat3.categoryName}</li>)}
+                                                  </ul>
+                                              </React.Fragment>
+                                              }
+                                          </div>)}
+                                      </div>
                                   </div>
                               </Link>)
+                              : ''
                           }
                       </Box>
                       <Box sx={{ flexGrow: 2 }} />

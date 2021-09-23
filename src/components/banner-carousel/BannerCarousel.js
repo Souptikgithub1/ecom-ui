@@ -20,7 +20,7 @@ const BannerCarousel = () => {
 
   return (
       <Carousel activeIndex={index} onSelect={handleSelect}>
-          {[image1, image2].map(img => <Carousel.Item interval='5000' style={{height: '1195px'}}>
+          {[image1, image2].map((img, i) => <Carousel.Item key={i} interval='5000' style={{height: '1195px'}}>
             {!isImgLoaded && <Skeleton variant='rectangular' width='100%' height='1195px' />}
             <React.Fragment>
                 <img
