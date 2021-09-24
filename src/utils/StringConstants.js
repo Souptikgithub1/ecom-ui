@@ -10,3 +10,6 @@ export const FAILURE = 'FAILURE';
 
 
 export const LOCAL_STORAGE_USER = 'user';
+
+export const CATEGORY_CARD = 'CATEGORY_CARD';
+export const PRODUCT_CARD = 'PRODUCT_CARD';

@@ -1,0 +1,25 @@
+.product-carousel-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 80px 0;
+}
+
+.product-carousel-container:last-child {
+    padding-bottom: 80px;
+}
+
+.product-carousel-header {
+    font-size: 20px;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.carousel-product-list-container {
+    display: flex;
+}
+
+.divider-container {
+    margin-bottom: 40px;
+}

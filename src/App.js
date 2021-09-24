@@ -11,6 +11,9 @@ import {useAppContext} from "./context/AppContext";
 import Loader from "./util-components/loader/Loader";
 
 import $ from 'jquery';
+import ProductCarousel from "./components/product-carousel/ProductCarousel";
+import {Divider} from "@mui/material";
+import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
 
 
 const App = (props) => {
@@ -35,18 +38,13 @@ const App = (props) => {
         {/*<Toolbar />*/}
         {/*<img src={image1} alt="none" width='100%' />*/}
         <BannerCarousel />
-      <Container>
-        <Box sx={{ my: 2 }}>
-          {[...new Array(120)]
-              .map(
-                  () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-              )
-              .join('\n')}
-        </Box>
-      </Container>
+        <ProductCarousel
+            headerName='Shop By Category'
+            type={CATEGORY_CARD}/>
+        <ProductCarousel
+            headerName='Popular Products'
+            type={PRODUCT_CARD}
+        />
         {!!isLoading && <Loader />}
     </div>
   );
