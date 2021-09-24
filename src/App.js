@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAppContext} from "./context/AppContext";
 import Loader from "./util-components/loader/Loader";
 
+import $ from 'jquery';
+
 
 const App = (props) => {
 
@@ -18,6 +20,14 @@ const App = (props) => {
     useEffect(() => {
         getCategories().then(res => {})
     }, [])
+
+    useEffect(() => {
+        if (!!isLoading) {
+            $('body').addClass('loading-screen')
+        } else {
+            $('body').removeClass('loading-screen')
+        }
+    }, [isLoading])
 
   return (
     <div className="App">

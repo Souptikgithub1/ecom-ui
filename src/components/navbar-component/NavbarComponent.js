@@ -114,9 +114,20 @@ const NavbarComponent = (props) => {
     useEffect(() => {
         const catTree = createCategoryTree(categories)
         setCatTreeData(catTree)
-
     }, [categories])
 
+
+    const makeCatChunk = (arr) => {
+        const length = arr.length;
+        const chunk = [];
+        const singleChunkSize = Math.round(length/4);
+
+        for (let i = 0 ; i <length  ; i+=singleChunkSize) {
+            chunk.push(arr.slice(i, i+singleChunkSize))
+
+        }
+        return chunk
+    }
 
 
     const handleProfileMenuOpen = (event) => {
@@ -246,14 +257,16 @@ const NavbarComponent = (props) => {
                                   <div className="dropdown-content">
                                         <Icon className='dropdown-arrow-up'>arrow_drop_up</Icon>
                                       <div className='dropdown-content-container'>
-                                          {cat1.children.map(cat2 => <div key={cat2.categoryId} className='category-subParent'>
-                                              {!!cat2.children && <React.Fragment>
-                                                  <span className='category-subParent-header'>{cat2.categoryName}</span>
-                                                  <ul className='category-list'>
-                                                      {cat2.children.map(cat3 => <li key={cat3.categoryId} className='category-list-item'>{cat3.categoryName}</li>)}
-                                                  </ul>
-                                              </React.Fragment>
-                                              }
+                                          {makeCatChunk(cat1.children).map(chunk => <div className='dropdown-content-container-column'>
+                                              {chunk.map(cat2 => <div key={cat2.categoryId} className='category-subParent'>
+                                                  {!!cat2.children && <React.Fragment>
+                                                      <span className='category-subParent-header'>{cat2.categoryName}</span>
+                                                      <ul className='category-list'>
+                                                          {cat2.children.map(cat3 => <li key={cat3.categoryId} className='category-list-item'>{cat3.categoryName}</li>)}
+                                                      </ul>
+                                                  </React.Fragment>
+                                                  }
+                                              </div>)}
                                           </div>)}
                                       </div>
                                   </div>
