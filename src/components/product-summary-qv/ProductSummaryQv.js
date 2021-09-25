@@ -8,7 +8,12 @@ import './ProductSummaryQv.css'
 const ProductSummaryQv = ({quickviewProduct}) => {
   return <div className="product-details-container-qv">
       <div className='product-details-img-container-qv'>
-          <ReactImageMagnify {...{
+          <ReactImageMagnify
+              hoverDelayInMs={0}
+              hoverOffDelayInMs={0}
+              enlargedImagePosition='over'
+              fadeDurationInMs={400}
+              {...{
               smallImage: {
                   alt: 'Wristwatch by Ted Baker London',
                   width: 400,
@@ -17,8 +22,8 @@ const ProductSummaryQv = ({quickviewProduct}) => {
               },
               largeImage: {
                   src: quickviewProduct,
-                  width: 500,
-                  height: 500
+                  width: 800,
+                  height: 800
               }
           }} />
           <div className="product-img-strip-container">
@@ -31,7 +36,7 @@ const ProductSummaryQv = ({quickviewProduct}) => {
           <div className="product-title-qv">Men Shoes</div>
           <Rating
               className='product-rating-qv'
-              size={"medium"}
+              size={"small"}
               name="read-only"
               value={3} readOnly />
           <div className="price-tag-qv">$299</div>
