@@ -1,0 +1,42 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 5rem;
+}
+
+.footer-cards-container {
+    display: flex;
+    margin-top: 5rem;
+}
+
+.footer-card {
+    margin-right: 5rem;
+}
+
+
+.footer-card:last-child {
+    margin-right: 0;
+}
+
+.footer-icon {
+    margin-bottom: 1.4rem;
+    font-size: 2.5rem !important;
+}
+
+.footer-header {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.footer-tag {
+    color: #777;
+    font-size: 1rem;
+}
+
+.footer-desc {
+    margin-top: 1rem;
+    color: #7b858a;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+}

@@ -82,9 +82,9 @@
 }
 
 .category-subParent-header {
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     display: flex;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -97,7 +97,7 @@
 
 .category-list-item {
     list-style: none;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 400;
     color: #666;
     width: 100%;
@@ -115,7 +115,7 @@
 }
 
 .category-list-item {
-    padding-bottom: 1px;
+    padding-bottom: 3px;
 }
 
 .category-list-item:hover,

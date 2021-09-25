@@ -19,9 +19,9 @@
 }
 
 .strip-img-container {
-    width: 5rem;
+    width: 4.5rem;
     height: auto;
-    border: 1px solid;
+    border: 1px solid #a1a1a1;
 }
 
 .strip-img {
@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: flex-start;
     flex: 2;
-    margin-left: 1rem;
+    margin-left: 1.25rem;
 }
 
 .product-title-qv {

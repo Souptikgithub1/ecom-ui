@@ -17,8 +17,7 @@ const ModalComponent = ({open, setOpen, headerText, children}) => {
                 TransitionComponent={Transition}
                 keepMounted
                 onClose={() => setOpen(false)}
-                aria-describedby="alert-dialog-slide-description"
-            >
+                aria-describedby="alert-dialog-slide-description">
                 {!!headerText && <DialogTitle>{headerText}</DialogTitle>}
                 <DialogContent>
                     {children}

@@ -7,24 +7,29 @@
 
 .cart-count-btns-container {
     display: flex;
-    border: 1px solid;
-}
-
-.minus-btn {
-    border-right: 1px solid;
-}
-
-.cart-count {
-    border-right: 1px solid;
-}
-
-.plus-btn {
-
+    border: 1px solid #c1c1c1;
 }
 
 .minus-btn, .cart-count, .plus-btn {
     padding: 0.7rem 1rem;
 }
+
+.minus-btn {
+    border-right: 1px solid #c1c1c1;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+
+.cart-count {
+    border-right: 1px solid #c1c1c1;
+}
+
+.plus-btn {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+
+
 
 
 .add-to-cart-btn {

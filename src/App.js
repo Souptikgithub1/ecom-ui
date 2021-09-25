@@ -11,6 +11,7 @@ import Loader from "./util-components/loader/Loader";
 import $ from 'jquery';
 import ProductCarousel from "./components/product-carousel/ProductCarousel";
 import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
+import FooterComponent from "./components/footer-component/FooterComponent";
 
 
 const App = (props) => {
@@ -42,6 +43,7 @@ const App = (props) => {
             headerName='Popular Products'
             type={PRODUCT_CARD}
         />
+        <FooterComponent />
         {!!isLoading && <Loader />}
     </div>
   );
