@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import './App.css';
 
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import NavbarComponent from "./components/navbar-component/NavbarComponent";
 import BannerCarousel from "./components/banner-carousel/BannerCarousel";
 
@@ -12,7 +10,6 @@ import Loader from "./util-components/loader/Loader";
 
 import $ from 'jquery';
 import ProductCarousel from "./components/product-carousel/ProductCarousel";
-import {Divider} from "@mui/material";
 import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
 
 
