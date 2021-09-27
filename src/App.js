@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 
 import NavbarComponent from "./components/navbar-component/NavbarComponent";
@@ -12,11 +12,14 @@ import $ from 'jquery';
 import ProductCarousel from "./components/product-carousel/ProductCarousel";
 import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
 import FooterComponent from "./components/footer-component/FooterComponent";
+import axios from "axios";
+import {PRODUCTS_URL} from "./utils/ApiConstants";
 
 
 const App = (props) => {
 
     const {getCategories, isLoading} = useAppContext();
+    const [popularProducts, setPopularProducts] = useState();
 
     useEffect(() => {
         getCategories().then(res => {})
@@ -30,19 +33,25 @@ const App = (props) => {
         }
     }, [isLoading])
 
+    useEffect(() => {
+        axios.get(PRODUCTS_URL)
+            .then(res => setPopularProducts(res.data))
+    }, [])
+
   return (
     <div className="App">
       <NavbarComponent {...props} />
         {/*<Toolbar />*/}
         {/*<img src={image1} alt="none" width='100%' />*/}
         <BannerCarousel />
-        <ProductCarousel
+        {/*<ProductCarousel
             headerName='Shop By Category'
-            type={CATEGORY_CARD}/>
-        <ProductCarousel
+            type={CATEGORY_CARD}/>*/}
+        {!!popularProducts && popularProducts.length > 0 && <ProductCarousel
+            dataArr={popularProducts}
             headerName='Popular Products'
             type={PRODUCT_CARD}
-        />
+        />}
         <FooterComponent />
         {!!isLoading && <Loader />}
     </div>

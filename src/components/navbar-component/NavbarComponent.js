@@ -257,7 +257,7 @@ const NavbarComponent = (props) => {
                                   <div className="dropdown-content">
                                         <Icon className='dropdown-arrow-up'>arrow_drop_up</Icon>
                                       <div className='dropdown-content-container'>
-                                          {makeCatChunk(cat1.children).map(chunk => <div className='dropdown-content-container-column'>
+                                          {makeCatChunk(cat1.children).map((chunk, i) => <div key={i} className='dropdown-content-container-column'>
                                               {chunk.map(cat2 => <div key={cat2.categoryId} className='category-subParent'>
                                                   {!!cat2.children && <React.Fragment>
                                                       <span className='category-subParent-header'>{cat2.categoryName}</span>

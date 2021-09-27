@@ -33,7 +33,7 @@ const FooterComponent = () => {
   return <div className='footer-container'>
       <Divider />
      <div className="footer-cards-container">
-         {footers.map(footer => <div className="footer-card">
+         {footers.map((footer, i) => <div key={i} className="footer-card">
              <Icon className="footer-icon">{footer.footerIcon}</Icon>
              <div className="footer-header">{footer.footerHeader}</div>
              <div className="footer-tag">{footer.footerTag}</div>

@@ -21,7 +21,16 @@
 .strip-img-container {
     width: 4.5rem;
     height: auto;
-    border: 1px solid #a1a1a1;
+    border: 1px solid #d1d1d1;
+    margin-right: 0.5rem;
+}
+
+.strip-img-container:hover {
+    cursor: pointer;
+}
+
+.strip-img-container.selected {
+    border: 1px solid #111;
 }
 
 .strip-img {

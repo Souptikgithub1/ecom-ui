@@ -1,11 +1,13 @@
 import ReactImageMagnify from "react-image-magnify";
 import {Rating} from "@mui/material";
 import AddToCart from "../add-to-cart/addToCart";
-import React from "react";
+import React, {useState} from "react";
 
 import './ProductSummaryQv.css'
 
 const ProductSummaryQv = ({quickviewProduct}) => {
+    const [selectedImg, setSelectedImg] = useState(quickviewProduct.images[0]);
+
   return <div className="product-details-container-qv">
       <div className='product-details-img-container-qv'>
           <ReactImageMagnify
@@ -16,31 +18,31 @@ const ProductSummaryQv = ({quickviewProduct}) => {
               {...{
               smallImage: {
                   alt: 'Wristwatch by Ted Baker London',
-                  width: 400,
-                  height: 400,
-                  src: quickviewProduct
+                  width: 480,
+                  height: 480,
+                  src: selectedImg
               },
               largeImage: {
-                  src: quickviewProduct,
-                  width: 800,
-                  height: 800
+                  src: selectedImg,
+                  width: 900,
+                  height: 900
               }
           }} />
           <div className="product-img-strip-container">
-              <div className="strip-img-container">
-                  <img className='strip-img' src={quickviewProduct} alt=""/>
-              </div>
+              {quickviewProduct.images.map((img, i) => <div key={i} className={'strip-img-container' + (img === selectedImg ? ' selected' : '')} onClick={() => setSelectedImg(img)}>
+                  <img className='strip-img' src={img} alt="something"/>
+              </div>)}
           </div>
       </div>
       <div className="product-details-qv">
-          <div className="product-title-qv">Men Shoes</div>
+          <div className="product-title-qv">{quickviewProduct.productName}</div>
           <Rating
               className='product-rating-qv'
               size={"small"}
               name="read-only"
-              value={3} readOnly />
-          <div className="price-tag-qv">$299</div>
-          <div className='product-desc-qv'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</div>
+              value={quickviewProduct.rating} readOnly />
+          <div className="price-tag-qv">$ {quickviewProduct.sellingPrice}</div>
+          <div className='product-desc-qv'>{quickviewProduct.productDescription}</div>
           <AddToCart />
       </div>
   </div>

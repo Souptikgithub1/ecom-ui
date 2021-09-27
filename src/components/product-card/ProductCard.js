@@ -4,7 +4,7 @@ import {Icon, Rating} from "@mui/material";
 
 import {useState} from "react";
 
-const ProductCard = ({id, type, setModalOpen, setQuickviewProduct}) => {
+const ProductCard = ({data, id, type, setModalOpen, setQuickviewProduct}) => {
 
   const [isWishSelected, setWishSelected] = useState(false);
 
@@ -15,7 +15,7 @@ const ProductCard = ({id, type, setModalOpen, setQuickviewProduct}) => {
   }
 
   const handleClickQuickView = () => {
-    setQuickviewProduct(`${img+id}.jpg`)
+    setQuickviewProduct(data)
     setModalOpen(true)
   }
 
@@ -26,14 +26,14 @@ const ProductCard = ({id, type, setModalOpen, setQuickviewProduct}) => {
       {type === PRODUCT_CARD && <div className="add-to-bag-btn"></div>}
       <img
           className='product-img'
-          src={`${img+id}.jpg`}
+          src={data.images[0]}
           alt="something"/>
 
     </div>
     {(type === CATEGORY_CARD) && <div className="category-name">Electronics</div>}
     {(type === PRODUCT_CARD) && <div className="product-summary">
       <div className="product-name-container">
-        <div className="product-name">Product Name</div>
+        <div className="product-name">{data.productName}</div>
         {!isWishSelected
             ? <Icon className='wish-icon' onClick={handleSelectWish}>favorite_border</Icon>
             : <Icon className='wish-icon-selected' onClick={handleSelectWish}>favorite</Icon>
@@ -43,8 +43,8 @@ const ProductCard = ({id, type, setModalOpen, setQuickviewProduct}) => {
           className='product-rating'
           size='small'
           name="read-only"
-          value={3} readOnly />
-      <div className="price-tag">$299</div>
+          value={data.rating} readOnly />
+      <div className="price-tag">$ {data.sellingPrice}</div>
     </div>}
   </div>
 }

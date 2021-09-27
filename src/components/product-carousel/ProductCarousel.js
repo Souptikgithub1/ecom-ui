@@ -5,16 +5,23 @@ import Divider from "../divider-component/Divider";
 import ModalComponent from "../modal-component/ModalComponent";
 import ProductSummaryQv from "../product-summary-qv/ProductSummaryQv";
 
-const ProductCarousel = ({headerName, type}) => {
+const ProductCarousel = ({dataArr, headerName, type}) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [quickviewProduct, setQuickviewProduct] = useState(null);
+
+    const handleQuickViewClose = (e) => {
+        if (!e) {
+            setModalOpen(e)
+            setQuickviewProduct(null)
+        }
+    }
 
     return <div className='product-carousel-container'>
         <div className='divider-container'><Divider /></div>
         <div className='product-carousel-header'>{headerName}</div>
         <div className='carousel-product-list-container'>
-            {[...new Array(6)]
-                .map((x, i) => <ProductCard
+            {dataArr.map((data, i) => <ProductCard
+                    data={data}
                     id={i+1}
                     setModalOpen={setModalOpen}
                     setQuickviewProduct={setQuickviewProduct}
@@ -22,12 +29,12 @@ const ProductCarousel = ({headerName, type}) => {
                     type={type} />)}
         </div>
 
-        <ModalComponent
+        {!!quickviewProduct && <ModalComponent
             open={modalOpen}
-            setOpen={setModalOpen} >
-                <ProductSummaryQv
-                    quickviewProduct={quickviewProduct} />
-        </ModalComponent>
+            setOpen={handleQuickViewClose} >
+            <ProductSummaryQv
+                quickviewProduct={quickviewProduct} />
+        </ModalComponent>}
     </div>
 }
 
