@@ -3,6 +3,7 @@ import {CATEGORY_CARD, PRODUCT_CARD} from "../../utils/StringConstants";
 import {Icon, Rating} from "@mui/material";
 
 import {useState} from "react";
+import {toCurreny} from "../../utils/CommonUtils";
 
 const ProductCard = ({data, id, type, setModalOpen, setQuickviewProduct}) => {
 
@@ -44,7 +45,7 @@ const ProductCard = ({data, id, type, setModalOpen, setQuickviewProduct}) => {
           size='small'
           name="read-only"
           value={data.rating} readOnly />
-      <div className="price-tag">$ {data.sellingPrice}</div>
+      <div className="price-tag">{toCurreny(data.sellingPrice)}</div>
     </div>}
   </div>
 }

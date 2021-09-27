@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import {AccountCircle, AccountCircleOutlined} from "@mui/icons-material";
+import {AccountCircle, AccountCircleOutlined, ShoppingBagOutlined} from "@mui/icons-material";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import {alpha, styled} from "@mui/material/styles";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -101,7 +101,7 @@ ElevationScroll.propTypes = {
 
 const NavbarComponent = (props) => {
 
-    const {categories} = useAppContext();
+    const {categories, setDrawerOpen} = useAppContext();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -287,6 +287,19 @@ const NavbarComponent = (props) => {
                             </Search>
                       </Box>
                       <Box sx={{ flexGrow: 1 }} />
+                      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                          <IconButton
+                              size="large"
+                              edge="end"
+                              aria-label="cart"
+                              aria-controls={menuId}
+                              aria-haspopup="true"
+                              onClick={() => setDrawerOpen(true)}
+                              color="inherit"
+                          >
+                              <ShoppingBagOutlined />
+                          </IconButton>
+                      </Box>
                       <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                           <IconButton
                               size="large"

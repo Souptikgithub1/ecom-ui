@@ -14,11 +14,12 @@ import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
 import FooterComponent from "./components/footer-component/FooterComponent";
 import axios from "axios";
 import {PRODUCTS_URL} from "./utils/ApiConstants";
+import {Drawer} from "@mui/material";
 
 
 const App = (props) => {
 
-    const {getCategories, isLoading} = useAppContext();
+    const {getCategories, isLoading, setDrawerOpen, isDrawerOpen} = useAppContext();
     const [popularProducts, setPopularProducts] = useState();
 
     useEffect(() => {
@@ -53,6 +54,13 @@ const App = (props) => {
             type={PRODUCT_CARD}
         />}
         <FooterComponent />
+        <Drawer
+            anchor='right'
+            open={isDrawerOpen}
+            onClose={() => setDrawerOpen(false)}
+        >
+            This section will be  showing for cart
+        </Drawer>
         {!!isLoading && <Loader />}
     </div>
   );

@@ -5,7 +5,7 @@ import {
     FAILURE,
     LOCAL_STORAGE_USER,
     LOGIN,
-    SET_CATEGORIES,
+    SET_CATEGORIES, SET_DRAWER_OPEN,
     SET_LOADING, SHOW_SNACK,
     SUCCESS
 } from "../utils/StringConstants";
@@ -16,6 +16,7 @@ const initState = {
     user: null,
     categories: [],
     isLoading: false,
+    isDrawerOpen: false,
     showSnack: {message: '', color: 'success', show: false}
 };
 
@@ -26,6 +27,10 @@ const AppProvider = ({children}) => {
 
     const setLoading = (value) => {
         dispatch({type: SET_LOADING, payload: value})
+    }
+
+    const setDrawerOpen = (value) => {
+        dispatch({type: SET_DRAWER_OPEN, payload: value})
     }
 
     const getCategories = async () => {
@@ -93,6 +98,7 @@ const AppProvider = ({children}) => {
             value={{
                 ...state,
                 setLoading,
+                setDrawerOpen,
                 getCategories,
                 addCategory,
                 login,

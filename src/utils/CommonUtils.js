@@ -37,3 +37,13 @@ export const createCategoryTree = (categoryList) => {
 export const getUser = () => {
     return localStorage.getItem(LOCAL_STORAGE_USER)
 }
+
+export const toCurreny = (number) => {
+    return Number(number)
+        .toLocaleString('en-In', {
+            currency: 'INR',
+            currencyDisplay: 'symbol',
+            style: 'currency',
+            maximumFractionDigits: 0
+        })
+}

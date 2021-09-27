@@ -4,6 +4,7 @@ import AddToCart from "../add-to-cart/addToCart";
 import React, {useState} from "react";
 
 import './ProductSummaryQv.css'
+import {toCurreny} from "../../utils/CommonUtils";
 
 const ProductSummaryQv = ({quickviewProduct}) => {
     const [selectedImg, setSelectedImg] = useState(quickviewProduct.images[0]);
@@ -41,7 +42,7 @@ const ProductSummaryQv = ({quickviewProduct}) => {
               size={"small"}
               name="read-only"
               value={quickviewProduct.rating} readOnly />
-          <div className="price-tag-qv">$ {quickviewProduct.sellingPrice}</div>
+          <div className="price-tag-qv">{toCurreny(quickviewProduct.sellingPrice)}</div>
           <div className='product-desc-qv'>{quickviewProduct.productDescription}</div>
           <AddToCart />
       </div>
