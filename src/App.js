@@ -13,7 +13,7 @@ import ProductCarousel from "./components/product-carousel/ProductCarousel";
 import {CATEGORY_CARD, PRODUCT_CARD} from "./utils/StringConstants";
 import FooterComponent from "./components/footer-component/FooterComponent";
 import axios from "axios";
-import {PRODUCTS_URL} from "./utils/ApiConstants";
+import {FIRST_6_PRODUCTS_URL, PRODUCTS_URL} from "./utils/ApiConstants";
 import {Drawer} from "@mui/material";
 
 
@@ -35,7 +35,7 @@ const App = (props) => {
     }, [isLoading])
 
     useEffect(() => {
-        axios.get(PRODUCTS_URL)
+        axios.get(FIRST_6_PRODUCTS_URL)
             .then(res => setPopularProducts(res.data))
     }, [])
 
