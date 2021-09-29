@@ -12,7 +12,9 @@ const ProductCarousel = ({dataArr, headerName, type}) => {
     const handleQuickViewClose = (e) => {
         if (!e) {
             setModalOpen(e)
-            setQuickviewProduct(null)
+            setTimeout(() => {
+                setQuickviewProduct(null)
+            }, 300)
         }
     }
 

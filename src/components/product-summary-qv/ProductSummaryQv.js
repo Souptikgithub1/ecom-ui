@@ -30,7 +30,8 @@ const ProductSummaryQv = ({quickviewProduct}) => {
               }
           }} />
           <div className="product-img-strip-container">
-              {quickviewProduct.images.map((img, i) => <div key={i} className={'strip-img-container' + (img === selectedImg ? ' selected' : '')} onClick={() => setSelectedImg(img)}>
+              {quickviewProduct.images
+                  .map((img, i) => <div key={i} className={'strip-img-container' + (img === selectedImg ? ' selected' : '')} onClick={() => setSelectedImg(img)}>
                   <img className='strip-img' src={img} alt="something"/>
               </div>)}
           </div>

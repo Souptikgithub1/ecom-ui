@@ -43,7 +43,6 @@ const App = (props) => {
     <div className="App">
       <NavbarComponent {...props} />
         {/*<Toolbar />*/}
-        {/*<img src={image1} alt="none" width='100%' />*/}
         <BannerCarousel />
         {/*<ProductCarousel
             headerName='Shop By Category'
