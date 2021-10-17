@@ -38,7 +38,7 @@ const App = (props) => {
       <NavbarComponent {...props} />
         <Switch>
             <Route exact path='/' component={HomePageComponent} />
-            <Route exact path='/product-details/:id' component={ProductDetailsComponent} />
+            <Route path='/product-details/:productId' component={ProductDetailsComponent} />
         </Switch>
         <FooterComponent />
         <Drawer

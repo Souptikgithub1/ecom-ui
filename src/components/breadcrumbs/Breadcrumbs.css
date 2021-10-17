@@ -1,0 +1,26 @@
+.breadcrumbs-container {
+    display: flex;
+
+}
+
+.breadcrumb-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+}
+
+.breadcrumb-div {
+    margin-right: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.breadcrumb-icon {
+    margin-right: 0.5rem;
+    font-size: 0.6rem !important;
+}
+
+.breadcrumb-container:last-child .breadcrumb-icon {
+    display: none;
+}

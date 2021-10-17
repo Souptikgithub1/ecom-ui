@@ -25,7 +25,6 @@ const ProductCard = ({data, id, type, setModalOpen, setQuickviewProduct}) => {
 
   const handleClickProduct = (e) => {
     stopPropagationAndPreventDefault(e)
-    console.log('clicked on', data)
     history.push(`/product-details/${formatProductPageUrl(data)}`)
   }
 
