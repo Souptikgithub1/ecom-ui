@@ -1,0 +1,25 @@
+.strip-img-container {
+    width: 4.5rem;
+    height: auto;
+    border: 1px solid #d1d1d1;
+    margin-right: 0.5rem;
+}
+
+.strip-img-container:hover {
+    cursor: pointer;
+}
+
+.strip-img-container.selected {
+    border: 1px solid #111;
+}
+
+.strip-img {
+    width: 100%;
+    height: auto;
+}
+
+.product-img-strip-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1rem;
+}
