@@ -7,6 +7,10 @@
     margin-right: 0;
 }
 
+.product-card-container:hover {
+    cursor: pointer;
+}
+
 .product-img-container {
     width: 100%;
     height: auto;

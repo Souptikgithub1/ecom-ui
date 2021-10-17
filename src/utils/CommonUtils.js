@@ -47,3 +47,12 @@ export const toCurreny = (number) => {
             maximumFractionDigits: 0
         })
 }
+
+export const stopPropagationAndPreventDefault = (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+}
+
+export const formatProductPageUrl = (data) => {
+    return `${data.productName.split(' ').join('-')}-${data._id}`
+}

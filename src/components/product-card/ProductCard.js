@@ -3,27 +3,36 @@ import {CATEGORY_CARD, PRODUCT_CARD} from "../../utils/StringConstants";
 import {Icon, Rating} from "@mui/material";
 
 import {useState} from "react";
-import {toCurreny} from "../../utils/CommonUtils";
+import {formatProductPageUrl, stopPropagationAndPreventDefault, toCurreny} from "../../utils/CommonUtils";
+import {useHistory} from "react-router-dom";
 
 const ProductCard = ({data, id, type, setModalOpen, setQuickviewProduct}) => {
 
+  const history = useHistory();
+
   const [isWishSelected, setWishSelected] = useState(false);
 
-  const [img] = useState(`https://d-themes.com/react/porto/demo3/images/home/categories/category-`)
-
   const handleSelectWish = (e) => {
+    stopPropagationAndPreventDefault(e)
     setWishSelected(prevState => !prevState)
   }
 
-  const handleClickQuickView = () => {
+  const handleClickQuickView = (e) => {
+    stopPropagationAndPreventDefault(e)
     setQuickviewProduct(data)
     setModalOpen(true)
   }
 
-  return <div className='product-card-container'>
+  const handleClickProduct = (e) => {
+    stopPropagationAndPreventDefault(e)
+    console.log('clicked on', data)
+    history.push(`/product-details/${formatProductPageUrl(data)}`)
+  }
+
+  return <div className='product-card-container' onClick={handleClickProduct}>
     <div className="product-img-container">
       {type === CATEGORY_CARD && <div className='overlay' />}
-      {type === PRODUCT_CARD && <div className="quick-view-btn" onClick={() => handleClickQuickView()}>Quick view</div>}
+      {type === PRODUCT_CARD && <div className="quick-view-btn" onClick={handleClickQuickView}>Quick view</div>}
       {type === PRODUCT_CARD && <div className="add-to-bag-btn"></div>}
       <img
           className='product-img'
