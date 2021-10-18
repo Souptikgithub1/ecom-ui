@@ -227,15 +227,17 @@ const NavbarComponent = (props) => {
           <ElevationScroll {...props}>
               <AppBar style={{ color: '#111'}}>
                   <Toolbar style={{paddingLeft: '5rem', paddingRight: '5rem'}}>
-                      <IconButton
-                          size="large"
-                          edge="start"
-                          color="inherit"
-                          aria-label="open drawer"
-                          sx={{ mr: 2 }}
-                      >
-                          <img src="/ecom-logo.png" alt="none" style={{width: '3.5rem', height: '3.5rem'}}/>
-                      </IconButton>
+                      <a href="/">
+                          <IconButton
+                              size="large"
+                              edge="start"
+                              color="inherit"
+                              aria-label="open drawer"
+                              sx={{ mr: 2 }}
+                          >
+                              <img src="/ecom-logo.png" alt="none" style={{width: '3.5rem', height: '3.5rem'}}/>
+                          </IconButton>
+                      </a>
                       <Box sx={{display: "flex", alignItems: "center"}}>
                           { !!catTreeData && catTreeData[0] ? catTreeData[0].children
                               .map(cat1 => <Link key={cat1.categoryId} underline='none' className='nav-bar-link dropdown'

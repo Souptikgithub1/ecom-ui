@@ -6,10 +6,15 @@ import './ProductDetailsComponent.css'
 import ProductDetailsImg from "../../components/product-details-img-component/ProductDetailsImg";
 import axios from "axios";
 import {PRODUCTS_URL} from "../../utils/ApiConstants";
-import {Rating} from "@mui/material";
+import {Rating, Skeleton} from "@mui/material";
 import {toCurreny} from "../../utils/CommonUtils";
+import ProductPageSellingPolicy from "../../components/product-page-selling-policy/ProductPageSellingPolicy";
 
 const ProductDetailsComponent = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
 
   const {productId} = useParams();
 
@@ -33,10 +38,10 @@ const ProductDetailsComponent = () => {
     <div className='product-description-section'>
       <div className='product-details-section'>
         <div className='product-details-img-container'>
-          {!!product && <ProductDetailsImg
+          <ProductDetailsImg
               selectedImg={selectedImg}
               setSelectedImg={setSelectedImg}
-              images={product.images}
+              images={product?.images}
               stripImgWidth='7rem'
               imgConfig={
                 {
@@ -44,22 +49,33 @@ const ProductDetailsComponent = () => {
                   largeImage: {width: 1000, height: 1000}
                 }
               }
-              />}
+          />
         </div>
         <div className="product-details">
-          <div className="product-details-name">{product?.productName}</div>
-          <Rating
-              className='product-rating-qv'
-              size={"medium"}
-              name="read-only"
-              value={product?.rating} readOnly />
+          <div className="product-details-name">
+            {!!product ? product?.productName : <Skeleton variant="rectangular" width={300} height={15} />}
+          </div>
+          <div className="product-details-rating-container">
+            {!!product ? <Rating
+                    className='product-rating-qv product-details-rating'
+                    size={"medium"}
+                    name="read-only"
+                    value={product?.rating} readOnly />
+                : <Skeleton variant="rectangular" width={300} height={15} />}
+          </div>
           <div className='product-price-section'>
-            <div className="product-actual-price">{toCurreny(product?.price)}</div>
-            <div className="product-selling-price">{toCurreny(product?.sellingPrice)}</div>
+            {!!product
+                ? <React.Fragment>
+                    <div className="product-actual-price">{toCurreny(product?.price)}</div>
+                    <div className="product-selling-price">{toCurreny(product?.sellingPrice)}</div>
+                  </React.Fragment>
+                : <Skeleton variant="rectangular" width={300} height={15} />}
           </div>
         </div>
       </div>
-      <div className='product-selling-policy'></div>
+      <div className='product-selling-policy'>
+        <ProductPageSellingPolicy />
+      </div>
     </div>
   </div>
 }

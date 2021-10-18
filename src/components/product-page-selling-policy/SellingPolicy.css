@@ -1,0 +1,25 @@
+.selling-policy-section {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.selling-policy-section:first-child {
+    margin-top: 0;
+}
+
+.policy-icon {
+    margin-right: 1rem;
+    font-size: 2.5rem !important;
+}
+
+
+.policy-text-section {
+    width: 8rem;
+    text-align: start;
+    color: #6b7a83;
+    font-weight: 500;
+    font-size: 0.9rem;
+}

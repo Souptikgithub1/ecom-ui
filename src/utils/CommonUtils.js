@@ -40,12 +40,7 @@ export const getUser = () => {
 
 export const toCurreny = (number) => {
     return Number(number)
-        .toLocaleString('en-In', {
-            currency: 'INR',
-            currencyDisplay: 'symbol',
-            style: 'currency',
-            maximumFractionDigits: 0
-        })
+        .toLocaleString('en-In')
 }
 
 export const stopPropagationAndPreventDefault = (event) => {

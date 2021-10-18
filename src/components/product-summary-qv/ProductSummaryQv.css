@@ -29,6 +29,10 @@
     color: #a1a1c1 !important;
 }
 
+.price-tag-qv::before {
+    content: '₹';
+}
+
 .price-tag-qv {
     display: flex;
     margin-top: 1rem;

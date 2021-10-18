@@ -1,6 +1,7 @@
 import React from "react";
 import ReactImageMagnify from "react-image-magnify";
 import './ProductDetailsImg.css';
+import {Skeleton} from "@mui/material";
 
 const ProductDetailsImg = ({
                                 selectedImg,
@@ -14,33 +15,35 @@ const ProductDetailsImg = ({
                                    }
 }) => {
   return <React.Fragment>
-      <ReactImageMagnify
-          hoverDelayInMs={0}
-          hoverOffDelayInMs={0}
-          enlargedImagePosition='over'
-          fadeDurationInMs={400}
-          {...{
-              smallImage: {
-                  alt: 'Wristwatch by Ted Baker London',
-                  width: imgConfig.smallImage.width,
-                  height: imgConfig.smallImage.height,
-                  src: selectedImg
-              },
-              largeImage: {
-                  src: selectedImg,
-                  width: imgConfig.largeImage.width,
-                  height: imgConfig.largeImage.height
-              }
-          }} />
+      {!!selectedImg
+        ? <ReactImageMagnify
+              hoverDelayInMs={0}
+              hoverOffDelayInMs={0}
+              enlargedImagePosition='over'
+              fadeDurationInMs={400}
+              {...{
+                  smallImage: {
+                      alt: 'Wristwatch by Ted Baker London',
+                      width: imgConfig.smallImage.width,
+                      height: imgConfig.smallImage.height,
+                      src: selectedImg
+                  },
+                  largeImage: {
+                      src: selectedImg,
+                      width: imgConfig.largeImage.width,
+                      height: imgConfig.largeImage.height
+                  }
+              }} />
+          : <Skeleton variant='rectangular' height={imgConfig.smallImage.height} width={imgConfig.smallImage.width} />}
       <div className="product-img-strip-container">
-          {images.map((img, i) =>
+          {!!images ? images.map((img, i) =>
               <div
-                key={i}
-                className={'strip-img-container' + (img === selectedImg ? ' selected' : '')}
-                onClick={() => setSelectedImg(img)}
-                style={{width: stripImgWidth}}>
+                  key={i}
+                  className={'strip-img-container' + (img === selectedImg ? ' selected' : '')}
+                  onClick={() => setSelectedImg(img)}
+                  style={{width: stripImgWidth}}>
                   <img className='strip-img' src={img} alt="something"/>
-              </div>)}
+              </div>) : [...new Array(5)].map((key, index) => <Skeleton className='strip-img-container' variant='rectangular' height={stripImgWidth} width={stripImgWidth} />) }
       </div>
   </React.Fragment>
 }

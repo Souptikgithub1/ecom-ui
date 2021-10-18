@@ -6,6 +6,7 @@
 
 .product-details-img-container {
     margin-right: 1rem;
+    min-width: 650px;
 }
 
 .product-details-section {
@@ -15,6 +16,8 @@
 
 .product-selling-policy {
     flex: 2;
+    display: flex;
+    flex-direction: column;
 }
 
 .breadcrumb-section {
@@ -38,17 +41,28 @@
     align-items: flex-start;
 }
 
+.product-details-rating-container {
+    width: fit-content;
+    display: flex;
+    margin-top: 0.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.product-details-rating {
+    margin: 0;
+    padding: 0;
+}
+
 .product-price-section {
     display: flex;
 }
 
 .product-selling-price,
 .product-actual-price{
-    font-size: 2.4rem;
+    font-size: 2rem;
     display: flex;
     font-weight: 600;
-    border-top: 1px solid #e1e1e1;
-    padding-top: 1rem;
     margin-top: 1rem;
 }
 
@@ -56,4 +70,11 @@
     text-decoration: line-through;
     margin-right: 1rem;
     color: #b1b1b1;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.product-actual-price::before,
+.product-selling-price::before {
+    content: '₹';
 }
