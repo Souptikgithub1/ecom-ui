@@ -7,7 +7,7 @@ const ProductDetailsImg = ({
                                 selectedImg,
                                 images,
                                 setSelectedImg,
-                                stripImgWidth='4.5rem',
+                                stripImgWidth='5rem',
                                 imgConfig=
                                    {
                                        smallImage: {width: 480, height: 480},
